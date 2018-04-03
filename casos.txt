@@ -1,0 +1,8 @@
+# si esta la barra lateral
+if vc.findViewByIdOrRaise('com.olx.olx:id/left_drawer '):
+  device.shell('input keyevent KEYCODE_BACK')
+
+#si esta en la pantalla de perfil, busca el otro correo
+
+
+#si esta en una pantalla sin el boton, abri la barra lateral y volver al home?
