@@ -1,7 +1,5 @@
-
 from com.dtmilano.android.viewclient import ViewClient
 kwargs1 = {'ignoreversioncheck': False, 'verbose': False, 'ignoresecuredevice': False}
 device, serialno = ViewClient.connectToDeviceOrExit(**kwargs1)
 kwargs2 = {'forceviewserveruse': False, 'useuiautomatorhelper': False, 'ignoreuiautomatorkilled': True, 'autodump': False, 'startviewserver': True, 'compresseddump': True}
 vc = ViewClient(device, serialno, **kwargs2)
-vc.dump(window=-1)
