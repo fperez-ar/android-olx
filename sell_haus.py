@@ -39,14 +39,12 @@ vc.findViewWithTextOrRaise(u'Vender').touch()
 vc.sleep(_s)
 vc.dump(window=-1)
 
-
-if vc.findViewWithText(u'¡Ups... Algo salió mal!'):
+if vc.findViewById('com.olx.olx:id/retry_catalog'):
  print "connection fail modal appears, fff"
- vc.dump(window=-1)
- vc.findViewWithTextOrRaise(u'Volver a intentar').touch()
-
+ vc.findViewByIdOrRaise('com.olx.olx:id/retry_catalog').touch()
 
 ## pantalla de elegir foto
+vc.dump(window=-1)
 vc.findViewByIdOrRaise('id/no_id/11').touch() #primer elemento de la grilla
 vc.dump(window=-1)
 vc.findViewWithTextOrRaise(u'Usar fotos').touch()
@@ -63,9 +61,16 @@ vc.dump(window=-1)
 vc.findViewByIdOrRaise('id/no_id/8').setText( price )
 vc.findViewWithTextOrRaise(u'Continuar').touch()
 vc.sleep(_s)
+vc.dump(window=-1)
 
-# Pantalla de elegir categoria e informacion que depende de categoria
+print "elapsed", round(time.time() - start_time), "seconds"
 
+
+if vc.findViewById('com.olx.olx:id/category_breadcrumb'):
+ vc.findViewWithTextOrRaise( unicode(category, utf) ).touch()
+ vc.dump(window=-1)
+ vc.findViewWithTextOrRaise( unicode(subcat, utf) ).touch()
+ vc.sleep(_s)
 
 #pre-caching fields
 vc.dump(window=-1)

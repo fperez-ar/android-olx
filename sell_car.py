@@ -15,11 +15,11 @@ config = ConfigParser.ConfigParser(allow_no_value=True)
 config.read('config.cfg')
 
 section = "car" #config.get("choose", "section")
-title = config.get(section, "title")
+title = unicode(config.get(section, "title"), utf)
 price = config.get(section, "price")
 
-category = config.get(section, "cat")
-subcat   = config.get(section, "sub")
+category = unicode(config.get(section, "cat"), utf)
+subcat   = unicode(config.get(section, "sub"), utf)
 
 make       = config.get(section, "make")
 model      = config.get(section, "model")
@@ -45,13 +45,12 @@ vc.findViewByIdOrRaise('com.olx.olx:id/fab_posting_masonry_home').touch()
 vc.sleep(_s)
 vc.dump(window=-1)
 
-
-if vc.findViewWithText(u'¡Ups... Algo salió mal!'):
+if vc.findViewById('com.olx.olx:id/retry_catalog'):
  print "connection fail modal appears, fff"
- vc.dump(window=-1)
- vc.findViewWithTextOrRaise(u'Volver a intentar').touch()
+ vc.findViewByIdOrRaise('com.olx.olx:id/retry_catalog').touch()
 
 ## pantalla de elegir foto
+vc.dump(window=-1)
 vc.findViewByIdOrRaise('com.olx.olx:id/gridTile').touch() #primer elemento de la grilla
 vc.dump(window=-1)
 vc.findViewByIdOrRaise('com.olx.olx:id/select_photos').touch()
